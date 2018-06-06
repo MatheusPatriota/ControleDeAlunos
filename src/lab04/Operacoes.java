@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Operacoes {
 	
 	private ArrayList<Aluno> alunos = new ArrayList<>();
-	private Grupo grupo = new Grupo(null, null);
+	private Grupo grupo;
 	private HashMap<String, Aluno> mapaMatriculaAlunos = new HashMap<>();
 	private HashMap<String, Grupo> grupoParaAlunos = new HashMap<>();
 	private ArrayList<Aluno> alunosQueResponderamQuestaoNoQuadro = new ArrayList<>();
@@ -54,18 +54,18 @@ public class Operacoes {
 	 * 
 	 * @param matricula
 	 */
-	public String consultaAluno(String matricula) {
+	public boolean consultaAluno(String matricula) {
 		
 		if (this.mapaMatriculaAlunos.containsKey(matricula) == true) {
 			
-			return("Aluno: " + mapaMatriculaAlunos.get(matricula));
+			System.out.println("Aluno: " + mapaMatriculaAlunos.get(matricula));
+			return true;
 		}
 		else {
 			
-			return("Aluno não cadastrado.");
+			System.out.println("Aluno não cadastrado.");
+			return false;
 		}
-		
-		
 		
 		
 		}
@@ -144,14 +144,16 @@ public class Operacoes {
 	 * 
 	 * @param nomeDoGrupo
 	 */
-	public void imprimeGrupo(String nomeDoGrupo) {
+	public boolean imprimeGrupo(String nomeDoGrupo) {
 		if (this.grupoParaAlunos.containsKey(nomeDoGrupo)) {
 			
 			System.out.println(grupo.toString());
+			return true;
 		}
 		else {
 			
 			System.out.println("Grupo não cadastrado.");
+			return false;
 		}
 		
 		
@@ -162,16 +164,18 @@ public class Operacoes {
 	 * 
 	 * @param matricula
 	 */
-	public void cadastraAlunosQueResponderamQuestoesNoQuadro(String matricula) {
+	public boolean cadastraAlunosQueResponderamQuestoesNoQuadro(String matricula) {
 		
 		if (this.mapaMatriculaAlunos.containsKey(matricula)) {
 			
 			alunosQueResponderamQuestaoNoQuadro.add(this.mapaMatriculaAlunos.get(matricula));
 			System.out.println("ALUNO REGISTRADO!");
+			return true;
 		}
 		else {
 			
 			System.out.println("Aluno não cadastrado.");
+			return false;
 		}
 		
 		
@@ -181,13 +185,14 @@ public class Operacoes {
 	 * quadro, esse metodo nao recebe parametros.
 	 * 
 	 */
-	public void imprimeAlunosQueResponderamQuestoesNoQuadro() {
+	public String imprimeAlunosQueResponderamQuestoesNoQuadro() {
 		System.out.println();
 		String resultadoDoArray = "";
 		for (int i = 0; i < alunosQueResponderamQuestaoNoQuadro.size(); i++) {
 			resultadoDoArray += (i+1 +". " +alunosQueResponderamQuestaoNoQuadro.get(i) + System.lineSeparator()); 
 		}
 		System.out.println(resultadoDoArray);
+		return (resultadoDoArray);
 	}
 	
 }

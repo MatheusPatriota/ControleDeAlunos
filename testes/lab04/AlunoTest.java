@@ -6,7 +6,6 @@ import org.junit.Test;
 
 
 public class AlunoTest {
-	// nome vazio, matricula vazia, matricula nula, curso nulo, curso vazio, toString, funcionando normalmente
 	
 	private Aluno alunoBasico;
 	

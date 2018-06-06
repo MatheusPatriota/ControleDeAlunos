@@ -19,6 +19,23 @@ public class Grupo {
 	 */
 	public Grupo(String nome, ArrayList<Aluno> alunos) {
 		
+		if (nome.equals(null)) {
+			
+			throw new NullPointerException("Nome do Grupo Nulo!");
+		}
+		
+		if (nome.equals("")) {
+			
+			throw new IllegalArgumentException("Nome do Grupo Vazio!");
+		}
+		
+		if (alunos.equals(null)) {
+			
+			throw new NullPointerException("Alunos Nulo!");
+		}
+		
+	
+		
 		this.nome = nome;
 		this.alunos = alunos;
 		
